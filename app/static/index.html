@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brightpath Assistant</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">BP</div>
+        <div>
+          <h1>Brightpath</h1>
+          <p>Company knowledge assistant</p>
+        </div>
+      </div>
+      <h2 class="section-label">Indexed documents</h2>
+      <ul id="doc-list" class="doc-list">
+        <li class="muted">Loading…</li>
+      </ul>
+      <div class="sidebar-footer">
+        Answers come only from these files. If it is not in the docs, the assistant will say so.
+      </div>
+    </aside>
+
+    <main class="chat">
+      <header class="chat-header">
+        <div>
+          <h2>Ask anything about Brightpath</h2>
+          <p>Leave, security, Pulse product, or engineering onboarding</p>
+        </div>
+      </header>
+
+      <section id="messages" class="messages" aria-live="polite">
+        <article class="bubble assistant">
+          <div class="avatar">AI</div>
+          <div class="body">
+            <p>
+              Hi — I can answer from Brightpath’s internal documents. Try
+              “How many casual leave days do we get?” or “What is the Pro plan price?”
+            </p>
+          </div>
+        </article>
+      </section>
+
+      <form id="composer" class="composer">
+        <input
+          id="input"
+          type="text"
+          autocomplete="off"
+          placeholder="Ask a question about company docs…"
+          required
+        />
+        <button type="submit" id="send">Send</button>
+      </form>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
