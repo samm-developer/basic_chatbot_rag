@@ -1,4 +1,4 @@
-def chunk_text(text: str, chunk_size: int = 800, overlap: int = 150) -> list[str]:
+def chunk_text(text: str, chunk_size: int = 100, overlap: int = 20) -> list[str]:
     normalized = text.replace("\r\n", "\n").strip()
     if not normalized:
         return []

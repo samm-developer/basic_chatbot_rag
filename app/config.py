@@ -16,10 +16,10 @@ class Settings(BaseSettings):
     openai_embedding_model: str = "text-embedding-3-small"
     openai_chat_model: str = "gpt-4o-mini"
     embedding_dimensions: int = 256
-    chunk_size: int = 800
-    chunk_overlap: int = 150
-    retrieve_k: int = 5
-    max_history_turns: int = 6
+    chunk_size: int = 100
+    chunk_overlap: int = 20
+    retrieve_k: int = 4
+    max_history_turns: int = 4
     max_cosine_distance: float = 0.55
     documents_dir: Path = PROJECT_ROOT / "data" / "documents"
 
