@@ -15,7 +15,7 @@ class Settings(BaseSettings):
     database_url: str = "postgresql+psycopg://rag:rag@localhost:5432/rag"
     openai_embedding_model: str = "text-embedding-3-small"
     openai_chat_model: str = "gpt-4o-mini"
-    embedding_dimensions: int = 1536
+    embedding_dimensions: int = 256
     chunk_size: int = 800
     chunk_overlap: int = 150
     retrieve_k: int = 5

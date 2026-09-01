@@ -27,6 +27,7 @@ def embed_texts(texts: list[str]) -> list[list[float]]:
         response = client.embeddings.create(
             model=settings.openai_embedding_model,
             input=batch,
+            dimensions=settings.embedding_dimensions,
         )
         ordered = sorted(response.data, key=lambda item: item.index)
         vectors.extend(item.embedding for item in ordered)
