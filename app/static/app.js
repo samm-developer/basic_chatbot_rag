@@ -3,6 +3,7 @@ const form = document.getElementById("composer");
 const input = document.getElementById("input");
 const send = document.getElementById("send");
 const docList = document.getElementById("doc-list");
+const clearData = document.getElementById("clear-data");
 
 const history = [];
 
@@ -57,6 +58,30 @@ form.addEventListener("submit", async (event) => {
   } finally {
     send.disabled = false;
     input.focus();
+  }
+});
+
+clearData.addEventListener("click", async () => {
+  const confirmed = window.confirm(
+    "Delete all indexed documents and chunks? This cannot be undone."
+  );
+  if (!confirmed) return;
+
+  clearData.disabled = true;
+  clearData.textContent = "Deleting…";
+  try {
+    const res = await fetch("/api/documents", { method: "DELETE" });
+    const data = await res.json();
+    if (!res.ok) {
+      throw new Error(formatDetail(data.detail) || "Failed to delete data");
+    }
+    history.length = 0;
+    await loadDocuments();
+  } catch (err) {
+    window.alert(err.message);
+  } finally {
+    clearData.disabled = false;
+    clearData.textContent = "Delete all data";
   }
 });
 

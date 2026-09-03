@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends
-from sqlalchemy import func, select
+from sqlalchemy import delete, func, select
 from sqlalchemy.orm import Session
 
 from app.db import get_db
@@ -33,3 +33,14 @@ def list_documents(db: Session = Depends(get_db)) -> list[DocumentOut]:
         )
         for row in rows
     ]
+
+
+@router.delete("/documents")
+def delete_all_documents(db: Session = Depends(get_db)) -> dict[str, int]:
+    deleted_chunks = db.execute(delete(Chunk)).rowcount or 0
+    deleted_documents = db.execute(delete(Document)).rowcount or 0
+    db.commit()
+    return {
+        "deleted_documents": deleted_documents,
+        "deleted_chunks": deleted_chunks,
+    }

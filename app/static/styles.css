@@ -120,12 +120,39 @@ body {
 .chat-header {
   padding: 18px 24px;
   border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
 }
 
 .chat-header h2 {
   margin: 0;
   font-size: 1.1rem;
   font-weight: 600;
+}
+
+.danger-button {
+  flex: 0 0 auto;
+  background: transparent;
+  border: 1px solid #8f4b55;
+  border-radius: 8px;
+  color: var(--danger);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 9px 12px;
+}
+
+.danger-button:hover,
+.danger-button:focus-visible {
+  background: #3a2028;
+}
+
+.danger-button:disabled {
+  cursor: wait;
+  opacity: 0.6;
 }
 
 .messages {
@@ -255,5 +282,13 @@ body {
 
   .sidebar {
     display: none;
+  }
+
+  .chat-header {
+    align-items: flex-start;
+  }
+
+  .danger-button {
+    white-space: nowrap;
   }
 }

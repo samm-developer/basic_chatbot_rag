@@ -70,5 +70,6 @@ Drop `.md`, `.txt`, `.pdf`, or `.docx` files into `data/documents/` and restart 
 
 - `GET /` — chat UI
 - `GET /api/documents` — ingested files
+- `DELETE /api/documents` — delete all ingested documents and chunks
 - `POST /api/chat` — `{ "message": "...", "history": [{ "role": "user", "content": "..." }] }`
 # basic_chatbot_rag
