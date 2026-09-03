@@ -5,6 +5,7 @@ from sqlalchemy.orm import Session
 from app.db import get_db
 from app.models import Chunk, Document
 from app.schemas import DocumentOut
+from app.services.ingest import ingest_documents
 
 router = APIRouter(prefix="/api", tags=["documents"])
 
@@ -33,6 +34,11 @@ def list_documents(db: Session = Depends(get_db)) -> list[DocumentOut]:
         )
         for row in rows
     ]
+
+
+@router.post("/documents/seed")
+def seed_documents(db: Session = Depends(get_db)) -> dict[str, int]:
+    return {"ingested_documents": ingest_documents(db)}
 
 
 @router.delete("/documents")

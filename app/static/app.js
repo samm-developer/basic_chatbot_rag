@@ -3,6 +3,7 @@ const form = document.getElementById("composer");
 const input = document.getElementById("input");
 const send = document.getElementById("send");
 const docList = document.getElementById("doc-list");
+const seedData = document.getElementById("seed-data");
 const clearData = document.getElementById("clear-data");
 
 const history = [];
@@ -82,6 +83,24 @@ clearData.addEventListener("click", async () => {
   } finally {
     clearData.disabled = false;
     clearData.textContent = "Delete all data";
+  }
+});
+
+seedData.addEventListener("click", async () => {
+  seedData.disabled = true;
+  seedData.textContent = "Seeding…";
+  try {
+    const res = await fetch("/api/documents/seed", { method: "POST" });
+    const data = await res.json();
+    if (!res.ok) {
+      throw new Error(formatDetail(data.detail) || "Failed to seed data");
+    }
+    await loadDocuments();
+  } catch (err) {
+    window.alert(err.message);
+  } finally {
+    seedData.disabled = false;
+    seedData.textContent = "Seed data";
   }
 });
 

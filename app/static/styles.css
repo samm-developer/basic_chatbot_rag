@@ -132,17 +132,37 @@ body {
   font-weight: 600;
 }
 
-.danger-button {
+.header-actions {
+  display: flex;
   flex: 0 0 auto;
-  background: transparent;
-  border: 1px solid #8f4b55;
+  gap: 8px;
+}
+
+.seed-button,
+.danger-button {
   border-radius: 8px;
-  color: var(--danger);
   cursor: pointer;
   font: inherit;
   font-size: 0.8rem;
   font-weight: 600;
   padding: 9px 12px;
+}
+
+.seed-button {
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  color: #061018;
+}
+
+.seed-button:hover,
+.seed-button:focus-visible {
+  background: #68b4f4;
+}
+
+.danger-button {
+  background: transparent;
+  border: 1px solid #8f4b55;
+  color: var(--danger);
 }
 
 .danger-button:hover,
@@ -290,5 +310,10 @@ body {
 
   .danger-button {
     white-space: nowrap;
+  }
+
+  .header-actions {
+    flex-wrap: wrap;
+    justify-content: flex-end;
   }
 }
